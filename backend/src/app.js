@@ -6,7 +6,13 @@ import userRouter from "./routes/user.routes.js";
 
 const app = express();
 
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+app.use(
+	cors({
+		origin: process.env.FRONTEND_URL,
+		methods: ["GET", "POST", "PUT", "PATCH"],
+		credentials: true,
+	})
+);
 app.use(express.json({ limit: "30kb" }));
 app.use(express.urlencoded({ extended: true, limit: "30kb" }));
 app.use(cookieParser());
