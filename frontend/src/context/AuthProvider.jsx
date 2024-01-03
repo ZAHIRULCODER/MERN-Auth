@@ -13,9 +13,13 @@ const AuthProvider = ({ children }) => {
 	const checkAuth = async () => {
 		setIsLoading(true);
 		try {
-			const response = await axios.get(CURRENT_USER, {
-				withCredentials: true,
-			});
+			const response = await axios.get(
+				CURRENT_USER,
+				{},
+				{
+					withCredentials: true,
+				}
+			);
 			setUser(response.data.data);
 			setIsAuthenticated(true);
 			return true;
