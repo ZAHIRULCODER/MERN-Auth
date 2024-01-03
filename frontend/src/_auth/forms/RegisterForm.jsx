@@ -47,7 +47,9 @@ const RegisterForm = () => {
 				toast.error("All fields are required");
 				return;
 			}
-			const response = await axios.post(REGISTER_USER, formData);
+			const response = await axios.post(REGISTER_USER, formData, {
+				withCredentials: true,
+			});
 			const { data } = response;
 			if (data && data.statusCode === 200 && data.success === true) {
 				toast.success(data.message);
